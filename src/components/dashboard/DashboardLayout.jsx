@@ -1,5 +1,5 @@
-import { Children, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation, useNavigate, Outlet } from "react-router-dom";
 import {
   FaHome,
   FaBook,
@@ -10,7 +10,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 
-const DashboardLayout = ({ Children }) => {
+const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -98,7 +98,7 @@ const DashboardLayout = ({ Children }) => {
 
         {/* Page Content */}
         <main className="flex-1 overflow-x-hidden overflow-y-auto p-6">
-          {Children}
+          <Outlet />
         </main>
       </div>
 

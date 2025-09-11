@@ -166,6 +166,14 @@ const Login = () => {
             </Link>
           </p>
         </div>
+
+        <div className="mt-4 p-3 bg-blue-50 rounded-lg">
+          <p className="text-sm text-blue-700 text-center">
+            <strong>Note:</strong>ReqRes API only allows registration with
+            predefined test emails. <br /> Use: eve.holt@reqres.in <br />{" "}
+            Password must be "pistol"
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -1,51 +1,63 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Login from "./pages/login";
+import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import DashboardLayout from "./components/dashboard/DashboardLayout";
 import DashboardHome from "./pages/dashboard/DashboardHome";
 import Courses from "./pages/dashboard/Courses";
+import Profile from "./pages/dashboard/Profile";
+import Assignments from "./pages/dashboard/Assignments";
+
+// Layout with footer (for Home)
+function PublicLayout() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+// Layout without footer (for login & signup)
+function AuthLayout() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+    </div>
+  );
+}
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
-        {/* Show header on all pages */}
-        <Header />
+      <Routes>
+        {/* Home with footer */}
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
 
-        <main className="flex-grow">
-          <Routes>
-            {/* Landing page as the default route */}
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route
-              path="/dashboard/*"
-              element={
-                <DashboardLayout>
-                  <Routes>
-                    <Route path="" element={<DashboardHome />} />
-                    <Route path="profile" element={<div>Profile</div>} />
-                    <Route path="courses" element={<Courses />} />
-                    <Route
-                      path="assignments"
-                      element={<div>Assignment Page</div>}
-                    />
-                  </Routes>
-                </DashboardLayout>
-              }
-            />
-          </Routes>
-        </main>
+        {/* Auth pages (no footer) */}
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Route>
 
-        {/* Footer shows only except auth pages */}
-        <Routes>
-          <Route path="/" element={<Footer />} />
-          <Route path="/*" element={null} />
-        </Routes>
-      </div>
+        {/* Dashboard */}
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="courses" element={<Courses />} />
+          <Route path="assignments" element={<Assignments />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

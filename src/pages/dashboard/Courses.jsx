@@ -9,18 +9,22 @@ const Courses = () => {
   // Fetch courses from Fake Store API
   const fetchCourses = async () => {
     try {
-      const response = await fetch("https://fakestoreapi.com/products");
-      const products = await response.json();
+      const response = await fetch(
+        "https://openlibrary.org/search.json?q=javascript",
+      );
+      const data = await response.json();
 
       // Transform products into courses
-      const courseData = products.map((product) => ({
-        id: product.id,
-        title: product.title,
-        price: `$${product.price}`,
-        image: product.image,
-        rating: product.rating.rate,
-        category: product.category,
-        instructor: `Instructor ${product.id}`,
+      const courseData = data.docs.slice(0, 9).map((book, index) => ({
+        id: book.key || index,
+        title: book.title,
+        price: `$${Math.floor(Math.random() * 50) + 10}`,
+        image: book.cover_i
+          ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`
+          : "https://via.placeholder.com/200x300?text=No+Cover",
+        rating: Math.floor(Math.random() * 5) + 1,
+        category: book.subject ? book.subject[0] : "General",
+        instructor: book.author_name ? book.author_name[0] : "Unknown Author",
       }));
 
       setCourses(courseData);

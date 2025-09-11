@@ -102,7 +102,7 @@ const DashboardHome = () => {
     loadDashboardData();
   }, []);
 
-  const StatCard = ({ icon: label, value, color }) => (
+  const StatCard = ({ icon: Icon, label, value, color }) => (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <div className="flex items-center">
         <div className={`p-3 rounded-full ${color} text-white mr-4`}>
@@ -170,24 +170,6 @@ const DashboardHome = () => {
           value={stats.upcomingDeadlines}
           color="bg-red-500"
         />
-      </div>
-
-      {/* API Status */}
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-semibold mb-4">API Integration Status</h2>
-        <div className="space-y-2 text-sm">
-          <p className="text-green-600">
-            ✓ ReqRes API: User authentication active
-          </p>
-          <p className="text-green-600">
-            ✓ Fake Store API: Courses data loaded ({stats.enrolledCourses}{" "}
-            courses)
-          </p>
-          <p className="text-green-600">
-            ✓ JSONPlaceholder: Assignments data loaded (
-            {stats.pendingAssignments} pending)
-          </p>
-        </div>
       </div>
 
       {/* User Info */}

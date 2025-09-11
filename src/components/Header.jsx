@@ -1,6 +1,7 @@
 import { useState } from "react";
 // import { Link } from "react-router-dom";
 import { FaGraduationCap } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,19 +60,20 @@ const Header = () => {
         </nav>
 
         {/* Auth Buttons */}
+
         <div className="flex space-x-4">
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg"
           >
             Login
-          </a>
-          <a
-            href="/signup"
+          </Link>
+          <Link
+            to="/signup"
             className="px-6 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-lg"
           >
             Sign Up
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -115,6 +117,12 @@ const Header = () => {
               className="text-left text-gray-700 hover:text-blue-600 py-2"
             >
               Contact
+            </button>
+            <button
+              onClick={() => scrollToSection("login")}
+              className="text-left text-gray-700 hover:text-blue-600 py-2"
+            >
+              Login
             </button>
           </div>
         </div>
