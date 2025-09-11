@@ -33,7 +33,7 @@ const DashboardLayout = () => {
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       <div
-        className={`fixed md:relative z-50 w-64 bg-blue-800 text-white transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"} h-full`}
+        className={`fixed md:relative z-50 w-64 bg-blue-800 text-white transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"} h-full`}
       >
         <div className="p-4">
           <div className="flex items-center justify-between mb-8">
