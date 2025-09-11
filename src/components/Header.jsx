@@ -61,7 +61,7 @@ const Header = () => {
 
         {/* Auth Buttons */}
 
-        <div className="flex space-x-4">
+        <div className="hidden md:flex space-x-4">
           <Link
             to="/login"
             className="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg"
