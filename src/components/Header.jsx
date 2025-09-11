@@ -118,12 +118,20 @@ const Header = () => {
             >
               Contact
             </button>
-            <button
-              onClick={() => scrollToSection("login")}
-              className="text-left text-gray-700 hover:text-blue-600 py-2"
+            <Link
+              to="/login"
+              className="text-left text-blue-600 hover:bg-blue-50 py-2 px-2 rounded-lg"
+              onClick={() => setIsMenuOpen(false)}
             >
               Login
-            </button>
+            </Link>
+            <Link
+              to="/signup"
+              className="text-left text-blue-600 text-white hover:bg-blue-700 py-2 px-2 rounded-lg"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Sign Up
+            </Link>
           </div>
         </div>
       )}

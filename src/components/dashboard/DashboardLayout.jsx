@@ -33,7 +33,7 @@ const DashboardLayout = () => {
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       <div
-        className={`fixed md:relative z-50 w-64 bg-blue-800 text-white transition-transform duration-300${sidebarOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"}h-full`}
+        className={`fixed md:relative z-50 w-64 bg-blue-800 text-white transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"} h-full`}
       >
         <div className="p-4">
           <div className="flex items-center justify-between mb-8">
@@ -52,7 +52,7 @@ const DashboardLayout = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center px-4 py-3 rounded-lg transition-colors${isActive ? "bg-blue-700 text-white" : "text-blue-100 hover:bg-blue-700"}`}
+                  className={`flex items-center px-4 py-3 rounded-lg transition-colors ${isActive ? "bg-blue-700 text-white" : "text-blue-100 hover:bg-blue-700"}`}
                   onClick={() => setSidebarOpen(false)}
                 >
                   <Icon className="mr-3" />
@@ -62,7 +62,10 @@ const DashboardLayout = () => {
             })}
 
             <button
-              onClick={handleLogout}
+              onClick={() => {
+                handleLogout();
+                setSidebarOpen(false);
+              }}
               className="flex items-center w-full px-4 py-3 text-blue-100 hover:bg-blue-700 rounded-lg transition-colors"
             >
               <FaSignOutAlt className="mr-3" />
