@@ -127,7 +127,7 @@ const Header = () => {
             </Link>
             <Link
               to="/signup"
-              className="text-left text-blue-600 text-white hover:bg-blue-700 py-2 px-2 rounded-lg"
+              className="text-left bg-blue-600 text-white hover:bg-blue-700 py-2 px-2 rounded-lg"
               onClick={() => setIsMenuOpen(false)}
             >
               Sign Up
